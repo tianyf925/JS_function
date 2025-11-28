@@ -3,31 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的任务看板</title>
-    <!-- 这里稍后会引入 CSS -->
-    <link rel="stylesheet" href="style.css"> 
+    <title>效率清单 Pro</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="app-container">
+        <!-- 顶部：标题与搜索 -->
+        <header>
+            <h1>效率清单 <span class="version">v2.0</span></h1>
+            <input type="text" id="search-input" placeholder="🔍 搜索任务...">
+        </header>
 
-    <!-- 1. 头部区域：输入任务的地方 -->
-    <header class="app-header">
-        <h1>🚀 个人任务中心</h1>
-        <div class="input-group">
-            <!-- id 是唯一的，方便 JS 找到它 -->
-            <input type="text" id="task-input" placeholder="输入你想做的事情...">
-            <button id="add-btn">添加任务</button>
+        <!-- 控制区：输入 + 优先级 -->
+        <div class="input-section">
+            <div class="input-wrapper">
+                <input type="text" id="task-input" placeholder="接下来要做什么？">
+                <!-- 优先级选择器 -->
+                <select id="priority-select">
+                    <option value="low">普通</option>
+                    <option value="medium">重要</option>
+                    <option value="high">紧急</option>
+                </select>
+                <button id="add-btn">创建任务</button>
+            </div>
         </div>
-    </header>
 
-    <!-- 2. 主体区域：展示任务列表的地方 -->
-    <main class="task-container">
-        <!-- 无序列表，稍后我们用 JS 往这里面塞东西 -->
+        <!-- 筛选区：标签页切换 -->
+        <div class="filter-section">
+            <div class="tabs">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="active">待办</button>
+                <button class="filter-btn" data-filter="completed">已完成</button>
+            </div>
+            <button id="clear-completed-btn">清理已完成</button>
+        </div>
+
+        <!-- 列表区 -->
         <ul id="task-list">
-
+            <!-- JS 生成 -->
         </ul>
-    </main>
+        
+        <!-- 统计信息 -->
+        <div class="footer-info">
+            当前列表有 <span id="task-count">0</span> 个任务
+        </div>
+    </div>
 
-    <!-- 3. 脚本引入：永远放在 body 结束标签之前 -->
     <script src="script.js"></script>
 </body>
 </html>
